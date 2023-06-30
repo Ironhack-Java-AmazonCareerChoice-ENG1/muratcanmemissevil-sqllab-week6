@@ -1,0 +1,89 @@
+q1:
+create table table1 (
+author text,
+title text,
+word_count int,
+views int);
+
+insert into table1 (author, title, word_count, views) values
+
+('Maria Charlotte', 'Best Paint Colors', '814', '14'),
+('Juan Perez', 'Small Space Decorating Tips	', '1146', '221'),
+('Maria Charlotte', 'Hot Accessories', '986	', '105'),
+('Maria Charlotte', 'Mixing Textures', '765	', '22'),
+('Juan Perez', 'Kitchen Refresh	', '1242', '307'),
+('Maria Charlotte', 'Homemade Art Hacks', '1002	', '193'),
+('Gemma Alcocer', 'Refinishing Wood Floors', '1571	', '7542');
+
+q2:
+
+create table table2 (
+customer_name text,
+customer_status text,
+flight_number text,
+aircraft text,
+total_aircraft_seats int,
+flight_mileage int,
+total_customer_mileage int);
+
+insert into table2 (customer_name, customer_status, flight_number, aircraft, total_aircraft_seats, flight_mileage, total_customer_mileage) values
+('Agustine Riviera','Silver','DL143','Boeing 747',400,135,115235),
+('Alaina Sepulvida','None','DL122','Airbus A330',236,4370,6008),
+ ('Tom Jones','Gold','DL122','Airbus A330',236,4370,205767),
+('Tom Jones','Gold','DL53','Boeing 777',264,2078,205767),
+('Tom Jones','Gold','DL222','Boeing 777',264,1765,205767),
+ ('Jessica James','Silver','DL143','Boeing 747',400,135,127656),
+ ('Sam Rio','None','DL143','Boeing 747',400,135,2653),
+ ('Ana Janco','Silver','DL222','Boeing 777',264,1765,136773),
+('Jennifer Cortez','Gold','DL222','Boeing 777',264,1765,300582),
+ ('Jessica James','Silver','DL122','Airbus A330',236,4370,127656),
+('Sam Rio','None','DL37','Boeing 747',400,531,2653),
+ ('Christian Janco','Silver','DL222','Boeing 777',264,1765,14642);
+ 
+
+q3:
+select count(distinct flight_number)
+from table2;
+
+
+q4:
+select avg(distinct flight_mileage)
+from table2;
+
+q5:
+select avg(distinct total_aircraft_seats
+from table2;
+
+q6:
+select customer_status, avg(distinct total_customer_mileage)
+from table2
+group by customer_status
+
+q7:
+select customer_status, max(distinct total_customer_mileage)
+from table2
+group by customer_status
+
+q8:
+SELECT count(distinct flight_number)
+from table2
+where (aircraft like 'Boeing%')
+
+q9:
+select distinct flight_mileage
+from table2
+where  flight_mileage <2000 and flight_mileage >300
+
+q10:
+select customer_status, avg(distinct flight_mileage)
+from table2
+group by customer_status
+
+q11:
+select  aircraft, count(aircraft) as maxaircraft
+from table2
+where customer_status='gold'
+group by aircraft
+order by maxaircraft desc
+limit 1
+
